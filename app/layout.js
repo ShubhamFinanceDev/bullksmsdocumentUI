@@ -23,8 +23,7 @@ export default function RootLayout({ children }) {
         <Providers>
           <Loader />
           {/* <Header /> */}
-          <main className="container-fluid">{children}</main>
-          <Footer />
+          <main className="">{children}</main>
         </Providers>
       </body>
     </html>

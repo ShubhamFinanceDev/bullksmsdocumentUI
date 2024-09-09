@@ -1,0 +1,47 @@
+.sidebar-page {
+  @media only screen and (min-width: 1000px) {
+
+    margin-top: 2rem;
+    position: sticky;
+    top: 2rem;
+    padding: 3%;
+
+    a {
+      width: 100%;
+      display: block;
+      border-radius: 0.25rem;
+
+      padding: 0.6rem 0.5rem;
+
+      button {
+        margin-bottom: 0.25rem;
+        background: #fff;
+
+        img {
+          height: 1.5rem;
+          width: 1.5rem;
+          object-fit: cover;
+        }
+      }
+
+      &.active {
+        background: $primary;
+
+        button {
+          span {
+            color: white;
+            background: $primary;
+          }
+
+          img {
+            filter: invert(1);
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+
