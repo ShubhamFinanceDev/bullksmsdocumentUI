@@ -12,10 +12,9 @@ const Layout = ({ children }) => {
         <div className="">
           <aside className="col-lg-2 col-md-1 col-12">
             <Sidebar />
-            <Footer />
           </aside>
           <section className="col-lg-10 col-md-11 col-12">
-            <Footer />
+
           </section>
         </div>
       </main>

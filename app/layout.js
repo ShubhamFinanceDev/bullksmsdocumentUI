@@ -22,9 +22,9 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true}>
         <Providers>
           <Loader />
-          {/* <Header /> */}
           <main className="">{children}</main>
         </Providers>
+        <Footer/>
       </body>
     </html>
   );
