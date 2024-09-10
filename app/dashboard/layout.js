@@ -7,7 +7,6 @@ import Footer from "@/components/core/Footer";
 const Layout = ({ children }) => {
   return (
     <>
-      <Header />
       <main className="">
         <div className="">
           <aside className="col-lg-2 col-md-1 col-12">

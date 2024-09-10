@@ -1,47 +1,138 @@
-.sidebar-page {
-  @media only screen and (min-width: 1000px) {
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  transition: width 0.3s ease;
+  padding: 13px;
+  display: flex;
+  flex-direction: column;
+}
 
+.sidebar.collapsed {
+  width: 68px;
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.company-logo {
+  object-fit: inherit;
+  margin-right: 1rem;
+ height: 2rem !important;
+ width: 90px !important;
+
+}
+
+
+// .sidebar.collapsed .company-logo {
+//   margin: 0;
+//   padding: 0;
+ 
+//   object-fit: inherit;
+// }
+
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.sidebar-content {
+  margin-top: 30px;
+}
+
+.sidebar button {
+  display: flex;
+  align-items: center;
+  background: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-radius: 6px;  
+
+}
+
+.sidebar img {
+  width: 1.5rem;
+  height: 1.5rem;
+  
+}
+
+.sidebar.collapsed img {
+  margin-right: 0;
+color: white !important;
+}
+
+.active button {
+  background-color: #070707;
+  color: white !important;
+  margin-bottom: 0.25rem;
+
+
+  span{
+    color: white !important;
+
+  }
+  img{
+    filter:invert(1);
+
+  }
+  
+  
+
+}
+
+@media only screen and (min-width: 1000px) {
+  .sidebar-page {
     margin-top: 2rem;
     position: sticky;
     top: 2rem;
     padding: 3%;
 
+    span {
+      font-size: 12px;
+    }
+
     a {
       width: 100%;
       display: block;
       border-radius: 0.25rem;
-
-      padding: 0.6rem 0.5rem;
+      padding: 0.5rem 0.5rem;
+      font-size: smaller;
 
       button {
         margin-bottom: 0.25rem;
-        background: #fff;
-
-        img {
-          height: 1.5rem;
-          width: 1.5rem;
-          object-fit: cover;
-        }
+        background-color: white;
+        text-align: left;
       }
 
       &.active {
-        background: $primary;
+        color: white;
+
+        background: #020203;
 
         button {
+          background-color: #f5f5f6;
+
           span {
             color: white;
-            background: $primary;
+            background-color: #151617;
           }
 
-          img {
+          img {           
+             color: white !important;
+             background: #f5f5f6;
             filter: invert(1);
           }
         }
       }
     }
   }
-
 }
-
 
 

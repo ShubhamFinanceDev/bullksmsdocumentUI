@@ -1,4 +1,4 @@
-import icons from '@/env/icons'
+import {icons} from '@/env/icons'
 import React from 'react'
 
 const Header = () => {

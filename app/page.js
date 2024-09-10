@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { InputWithLabel } from '@/components/core/Input'
-import icons from '@/env/icons'
+import {icons} from '@/env/icons'
 
 
 function SingInPages() {
