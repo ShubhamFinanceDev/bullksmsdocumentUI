@@ -1,37 +1,77 @@
+.company-logo {
+  object-fit: inherit;
+  margin-right: 0.5rem;
+ height: 2.5rem !important;
+ width: 180px !important;
+
+}
+
+
 .sidebar {
   width: 240px;
   height: 100vh;
   transition: width 0.3s ease;
-  padding: 13px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
-}
 
+  button {
+    display: flex;
+    align-items: center;
+    background: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border-radius: 6px;  
+  
+  }
+
+  img {
+    width: 1.2rem;
+    height: 1.2rem;
+    
+  }
+
+  span{
+    font-size: smaller;
+  }
+  
+
+
+}
+.company-title {
+  font-size: large !important ;
+  }
+
+  
 .sidebar.collapsed {
-  width: 68px;
+  width: 60px;
+  padding: 8px;
+  margin-top: 13px;
+  img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 3px;
+    margin-left: 2px;
+  color: white !important;
+  }
+  .company-logo{
+    margin-bottom: 10px;
+  }
+ 
+
+ 
 }
 
 .company-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.company-logo {
-  object-fit: inherit;
-  margin-right: 1rem;
- height: 2rem !important;
- width: 90px !important;
-
-}
-
-
-// .sidebar.collapsed .company-logo {
-//   margin: 0;
-//   padding: 0;
  
-//   object-fit: inherit;
-// }
+}
+
+
 
 .toggle-btn {
   background: none;
@@ -42,30 +82,7 @@
 
 
 .sidebar-content {
-  margin-top: 30px;
-}
-
-.sidebar button {
-  display: flex;
-  align-items: center;
-  background: none;
-  padding: 10px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  border-radius: 6px;  
-
-}
-
-.sidebar img {
-  width: 1.5rem;
-  height: 1.5rem;
-  
-}
-
-.sidebar.collapsed img {
-  margin-right: 0;
-color: white !important;
+  margin-top: 10px;
 }
 
 .active button {
@@ -87,52 +104,52 @@ color: white !important;
 
 }
 
-@media only screen and (min-width: 1000px) {
-  .sidebar-page {
-    margin-top: 2rem;
-    position: sticky;
-    top: 2rem;
-    padding: 3%;
+// @media only screen and (min-width: 1000px) {
+//   .sidebar-page {
+//     margin-top: 2rem;
+//     position: sticky;
+//     top: 2rem;
+//     padding: 3%;
 
-    span {
-      font-size: 12px;
-    }
+//     span {
+//       font-size: 12px;
+//     }
 
-    a {
-      width: 100%;
-      display: block;
-      border-radius: 0.25rem;
-      padding: 0.5rem 0.5rem;
-      font-size: smaller;
+//     a {
+//       width: 100%;
+//       display: block;
+//       border-radius: 0.25rem;
+//       padding: 0.5rem 0.5rem;
+//       font-size: smaller;
 
-      button {
-        margin-bottom: 0.25rem;
-        background-color: white;
-        text-align: left;
-      }
+//       button {
+//         margin-bottom: 0.25rem;
+//         background-color: white;
+//         text-align: left;
+//       }
 
-      &.active {
-        color: white;
+//       &.active {
+//         color: white;
 
-        background: #020203;
+//         background: #020203;
 
-        button {
-          background-color: #f5f5f6;
+//         button {
+//           background-color: #f5f5f6;
 
-          span {
-            color: white;
-            background-color: #151617;
-          }
+//           span {
+//             color: white;
+//             background-color: #151617;
+//           }
 
-          img {           
-             color: white !important;
-             background: #f5f5f6;
-            filter: invert(1);
-          }
-        }
-      }
-    }
-  }
-}
+//           img {           
+//              color: white !important;
+//              background: #f5f5f6;
+//             filter: invert(1);
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 

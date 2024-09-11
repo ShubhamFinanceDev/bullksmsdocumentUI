@@ -43,8 +43,9 @@ const Sidebar = () => {
         <div className="company-header">
         
           <img src="/favicon/favicon.ico" alt="logo" className="company-logo " />
-          <button>
-                {!isCollapsed && <span>shubham</span>}
+          <button  >
+                {!isCollapsed && <span className="company-title">shubham
+                <span className="company-title"> Finance</span></span>}
               </button>
           <button
             className={`toggle-btn ${isCollapsed ? "toggled" : ""}`}
@@ -66,9 +67,9 @@ const Sidebar = () => {
                   : ""
               }
             >
-              <button>
+              <button >
                 <img src={n.icon} alt={n.label} />
-                {!isCollapsed && <span>{n.label}</span>}
+                {!isCollapsed && <span >{n.label}</span>}
               </button>
             </Link>
           ))}
