@@ -10,7 +10,7 @@ const ValidationMsg = () => {
     useEffect(() => {
         setTimeout(() => {
             resetValidation()
-        }, 10000);
+        }, 5000);
     }, [type, msg])
     return (msg && <p className={`text-center ${type}`}>
         {msg}
