@@ -44,7 +44,7 @@ const Sidebar = () => {
         
           <img src="/favicon/favicon.ico" alt="logo" className="company-logo " />
           <button>
-                {!isCollapsed && <span>shubham</span>}
+                {!isCollapsed && <span>Shubham</span>}
               </button>
           <button
             className={`toggle-btn ${isCollapsed ? "toggled" : ""}`}

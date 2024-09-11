@@ -121,18 +121,23 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-p.error,
-p.success {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #dc3545;
-  text-align: center;
-  font-weight: 500;
+
+.text-center {
+  width: 100%;
+  text-transform: capitalize;
 }
 
 p.success {
   color: green;
 }
+
+p.error {
+  font-size: 0.95rem;
+  color: #dc3545;
+  text-align: center;
+  font-weight: 600;
+}
+
 
 .breadcrumb-container {
   p {

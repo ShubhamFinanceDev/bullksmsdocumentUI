@@ -1,33 +1,84 @@
 .login-page-outer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 78vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
 
-  
-    .login-form-inner-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-width: 400px;
-      border-radius: 0.5rem;
-  
-      h2 {
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-  
-      img {
-        margin-bottom: 2rem;
-        height: 130px;
-        width: 180px;
-        object-fit: cover;
-        border-radius: 100% ;
-      }
-      div {
-        width: 100%;
-      }
-    }
+.login-form-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 400px;
+  padding: 2rem;
+  background-color: #ffffff; 
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.5s ease;
+}
+
+.login-form-inner-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.login-form-inner-container h2 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.login-form-inner-container img {
+  margin-bottom: 2rem;
+  height: 125px;
+  width: 125px;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 2px solid #000000; 
+}
+
+.login-form-inner-container div {
+  width: 100%;
+}
+
+.login-form-inner-container p {
+  font-weight: 500;
+  // color: #000000; 
+  margin-bottom: 1rem;
+}
+.login-form-inner-container h2 {
+  font-weight: 800;
+}
+.btn-primary {
+  background-color: #000000; 
+  border-color: #000000; 
+  color: #ffffff; 
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #333333; 
+  border-color: #333333; 
+}
+
+.btn-link {
+  color: #000000; 
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+  color: #555555; 
+}
+
+@media (max-width: 576px) {
+  .login-form-inner-container {
+    min-width: 100%;
+    padding: 1.5rem;
   }
-  
+
+  .login-form-inner-container img {
+    height: 100px;
+    width: 100px;
+  }
+}

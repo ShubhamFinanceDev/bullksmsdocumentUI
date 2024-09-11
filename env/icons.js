@@ -1,5 +1,5 @@
 export const icons = {
-    LOGO: "/img/logo-2.png",
+    LOGO: "/img/branding_logo.jpg",
     NAV_LOGO: "/img/logo.png",
     
     Icon01: "/icon/Icon-1.png",
