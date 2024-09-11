@@ -10,12 +10,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 400px;
+  min-width: 550px;
   padding: 2rem;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.5s ease;
+  gap: 1.5rem;
 }
 
 .login-form-inner-container:hover {
@@ -24,6 +25,7 @@
 
 .login-form-inner-container h2 {
   font-weight: 600;
+  float: left;
   margin-bottom: 0.5rem;
   color: #000000;
 }
@@ -37,8 +39,20 @@
   border: 2px solid #000000; 
 }
 
-.login-form-inner-container div {
+.login-form-inner-container 
+div {
   width: 100%;
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: #454545;
+  }
+  h3 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    padding: 0.375rem 0.75rem;
+  }
 }
 
 .login-form-inner-container p {
@@ -46,9 +60,7 @@
   // color: #000000; 
   margin-bottom: 1rem;
 }
-.login-form-inner-container h2 {
-  font-weight: 800;
-}
+.login-form-inner-container 
 .btn-primary {
   background-color: #000000; 
   border-color: #000000; 

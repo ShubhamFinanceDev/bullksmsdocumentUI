@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 // Services
 import useActionDispatch from '@/hooks/useActionDispatch';
 import { changeHandlerHelper } from '@/hooks/helper/changeHandler';
@@ -33,7 +34,8 @@ function useAuthHooks() {
             const body = {...authBody}
             const {data} = await axios.post(endpoint.signIn(),body)
             const { token, emailId: email,} = data
-             const user = { token, email }
+            const user = { token, email }
+            Cookies.set("token", data.token)
             setUserAuthCred(user)
             router.push(pageRoutes.DASHBOARD_PAGE())
             

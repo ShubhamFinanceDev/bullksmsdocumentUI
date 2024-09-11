@@ -16,8 +16,7 @@ function SingInPages() {
           onSubmit={siginSubmitHandler}
           className="login-form-inner-container">
           {/* <img src={icons.LOGO} alt="Logo" className='mb-3' /> */}
-          <h2> Welcome To Shubham Finance</h2>
-          <p>Bulk Sms Document</p>
+          <div><h3>Sign in</h3></div>
            <ValidationMsg/>
           <InputWithLabel
             feilds={{

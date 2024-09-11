@@ -16,21 +16,22 @@ const Sidebar = () => {
       path: "/dashboard",
     },
     {
-      label: "Loan Data Upload",
+      label: "Data Upload",
       icon: icons.Icon02,
       path: "/dashboard/loandataupload",
     },
     {
-      label: "Send Certificate Request",
+      label: "File Upload",
+      icon: icons.Icon02,
+      path: "/mergecustomerdocument",
+    },
+    {
+      label: "Send Kit",
       icon: icons.Icon03,
       path: "/sendcertificaterequest",
       isMobileOnly: true,
     },
-    {
-      label: "Merge Customer Document",
-      icon: icons.Icon02,
-      path: "/mergecustomerdocument",
-    },
+
   ];
 
   const toggleSidebar = () => {
@@ -44,7 +45,7 @@ const Sidebar = () => {
         
           <img src="/favicon/favicon.ico" alt="logo" className="company-logo " />
           <button>
-                {!isCollapsed && <span>Shubham</span>}
+                {!isCollapsed && <span>Shubham Finance</span>}
               </button>
           <button
             className={`toggle-btn ${isCollapsed ? "toggled" : ""}`}
@@ -53,6 +54,7 @@ const Sidebar = () => {
             <img src={icons.Icon05} alt="toggle" />
           </button>
         </div>
+        <hr />
         <div className="sidebar-content">
           {navlink.map((n, idx) => (
             <Link

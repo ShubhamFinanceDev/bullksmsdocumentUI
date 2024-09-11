@@ -251,6 +251,110 @@ hr {
     display: none !important;
   }
 }
+aside {
+  border-right: 2px solid #dddddd;
+  opacity: 1;
+}
+.page-heading-container {
+  margin-bottom: 1rem;
+  .page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      button {
+        background: transparent;
+        color: $primary;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+    }
+  }
+
+  .search-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .search-input-form {
+      background: #f8f8f8;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+
+      input {
+        padding: 0.5rem 1rem;
+        background: transparent;
+        font-size: 0.9rem;
+        font-weight: 600;
+        width: 100%;
+        color: $text-color;
+      }
+    }
+
+    img {
+      height: 1.25rem;
+      width: 1.25rem;
+      object-fit: cover;
+      margin-right: 0.5rem;
+    }
+  }
+}
+.action-btns {
+  display: flex;
+  gap: 0.5rem;
+
+  img {
+    height: 1.25rem;
+    width: 1.25rem;
+    object-fit: cover;
+    margin-right: 0.5rem;
+  }
+
+  button {
+    background: $primary;
+    color: white;
+    border: 2px solid $primary;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 0.35rem 1rem;
+    font-size: 0.9rem;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-outline {
+    background: $primary;
+    color: $primary;
+    border: 2px solid $primary;
+  }
+
+  .btn-gradient {
+    background: transparent linear-gradient(101deg, #a0ffb7 0%, #edff62 100%) 0%
+      0% no-repeat padding-box;
+    border: none;
+    color: $primary;
+  }
+}
 
 
 
@@ -268,6 +372,48 @@ img {
   width: 6rem;
   object-fit: cover;
   margin-right: 20px;
+}
+
+.table-container {
+  table {
+    thead {
+      tr {
+        th {
+          background-color: $primary !important;
+          color: white;
+          font-size: 0.9rem;
+          font-weight: 600;
+
+          &:nth-of-type(1) {
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+          }
+
+          &:nth-last-of-type(1) {
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+          }
+        }
+      }
+    }
+
+    tbody {
+      td {
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: $text-color;
+        a {
+          font-size: 0.9rem !important;
+          font-weight: 600;
+          color: $text-color;
+
+          &:hover {
+            color: royalblue;
+          }
+        }
+      }
+    }
+  }
 }
 
 @import "./core.style.scss";
