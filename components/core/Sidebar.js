@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { icons } from "@/env/icons";
 import useAuthHooks from "@/hooks/useAuthHooks";
 
-const Sidebar = () => {
+const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   const pathname = usePathname();
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const {logoutActionHandler} = useAuthHooks()
 
   const navlink = [
@@ -33,58 +32,52 @@ const Sidebar = () => {
       path: "/sendcertificaterequest",
       isMobileOnly: true,
     },
-
   ];
 
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
   return (
-    <>
-      <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
-        <div className="company-header">
-        
-          <img src="/favicon/favicon.ico" alt="logo" className="company-logo " />
-          <button>
-                {!isCollapsed && <span>Shubham Finance</span>}
-              </button>
-          <button
-            className={`toggle-btn ${isCollapsed ? "toggled" : ""}`}
-            onClick={toggleSidebar}
-          >
-            <img src={icons.Icon05} alt="toggle" />
-          </button>
+    <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+      <div className="company-header">
+        <img src="/favicon/favicon.ico" alt="logo" className="company-logo" />
+        <div>
+          {!isCollapsed && (
+            <span className="company-title">
+              shubham Finance</span>
+          )}
         </div>
-        <hr />
-        <div className="sidebar-content">
-          {navlink.map((n, idx) => (
-            <Link
-              href={n.path}
-              key={`nav-link__${idx}`}
-              className={
-                pathname === n.path
-                  ? "active"
-                  : n.isMobileOnly
-                  ? "isDesktopOnly"
-                  : ""
-              }
-            >
-              <button>
-                <img src={n.icon} alt={n.label} />
-                {!isCollapsed && <span>{n.label}</span>}
-              </button>
-            </Link>
-          ))}
-          <a>
-            <button onClick={logoutActionHandler}>
-              <img src={icons.Icon04} alt="logout" />
-              {!isCollapsed && <span>Logout</span>}
-            </button>
-          </a>
-        </div>
+        <button
+          className={`toggle-btn ${isCollapsed ? "toggled" : ""}`}
+          onClick={toggleSidebar}
+        >
+          <img src={icons.Icon05} alt="toggle" />
+        </button>
       </div>
-    </>
+      <div className="sidebar-content">
+        {navlink.map((n, idx) => (
+          <Link
+            href={n.path}
+            key={`nav-link__${idx}`}
+            className={
+              pathname === n.path
+                ? "active"
+                : n.isMobileOnly
+                ? "isDesktopOnly"
+                : ""
+            }
+          >
+            <button>
+              <img src={n.icon} alt={n.label} />
+              {!isCollapsed && <span>{n.label}</span>}
+            </button>
+          </Link>
+        ))}
+        <a>
+            <button onClick={logoutActionHandler}>
+            <img src={icons.Icon04} alt="logout" />
+            {!isCollapsed && <span>Logout</span>}
+          </button>
+        </a>
+      </div>
+    </div>
   );
 };
 

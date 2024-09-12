@@ -416,6 +416,18 @@ img {
   }
 }
 
+
+.main-class {
+  transition: margin-left 0.3s ease;
+}
+
+.main-class .col-lg-1,
+.main-class .col-md-1 {
+  transition: width 0.3s ease;
+}
+
+
+
 @import "./core.style.scss";
 @import "./page.styles.scss";
 @import "./header.styles.scss";
