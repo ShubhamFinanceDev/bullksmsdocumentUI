@@ -45,7 +45,8 @@ const useFormHooks = () => {
     reader.readAsText(file);
   };
 
-  const submitCsvData = async () => {
+  const submitCsvData = async (e) => {
+    e.preventDefault()
     if (!uploadFile.file) {
       setValidationError(true);
       return;

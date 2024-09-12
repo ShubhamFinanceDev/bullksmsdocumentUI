@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { icons } from "@/env/icons";
+import useAuthHooks from "@/hooks/useAuthHooks";
 
 const Sidebar = () => {
   const pathname = usePathname();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const {logoutActionHandler} = useAuthHooks()
 
   const navlink = [
     {
@@ -75,7 +77,7 @@ const Sidebar = () => {
             </Link>
           ))}
           <a>
-            <button>
+            <button onClick={logoutActionHandler}>
               <img src={icons.Icon04} alt="logout" />
               {!isCollapsed && <span>Logout</span>}
             </button>

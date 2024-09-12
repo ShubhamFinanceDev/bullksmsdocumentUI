@@ -1,9 +1,14 @@
+'use client'
+
 import React from 'react'
 import PageHeading from '@/components/core/PageHeading'
+import Drawer from '@/hoc/drawerHoc'
+import ValidationMsg from '@/components/core/Input/ValidationMsg'
 
-const dashboardPage = () => {
+const dashboardPage = (props) => {
   return (
     <div className="main">
+    <ValidationMsg/>
       <PageHeading
         heading="Dashboard"
         // subHeading={dashboard?.name}
@@ -13,21 +18,19 @@ const dashboardPage = () => {
           {
             label: "Add User",
             className: "button",
-            // icon: icons.Icon19,
-            // onClick: () => props.openDrawer({
-            //     title: dashboard.name,
-            //     component: "DASHBOARD_COMMENT",
-            //     dashboard: dashboard
-            // })
+            onClick: () => props.openDrawer({
+                title: "SingUp",
+                component: "SINGUP",
+            })
           },
         ]}
+        
       />
       <div className="container">
-        hii
 
       </div>
     </div>
   )
 }
 
-export default dashboardPage
+export default Drawer(dashboardPage)
