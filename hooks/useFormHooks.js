@@ -5,9 +5,9 @@ import useActionDispatch from "./useActionDispatch";
 
 const useFormHooks = () => {
   const fileInputRef = useRef(null);
-  const { setError, setSuccess, setUserAuthCred, removeUserAuthCred } = useActionDispatch()
+  const { setError, setSuccess, setUserAuthCred, removeUserAuthCred } = useActionDispatch();
   const [uploadFile, setUploadFile] = useState({ file: null, error: "" });
-  const [parsedData, setParsedData] = useState([]); 
+  const [parsedData, setParsedData] = useState([]);
   const [validationError, setValidationError] = useState(false);
 
   const uploadFileChangeHandler = (e) => {
@@ -45,17 +45,26 @@ const useFormHooks = () => {
     reader.readAsText(file);
   };
 
+  const resetFormState = () => {
+    setUploadFile({ file: null, error: "" });
+    setParsedData([]);
+    setValidationError(false);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = null; 
+    }
+  };
+
   const submitCsvData = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!uploadFile.file) {
       setValidationError(true);
       return;
     }
 
-    setValidationError(false); 
+    setValidationError(false);
 
     const formData = new FormData();
-    formData.append("file", uploadFile.file); 
+    formData.append("file", uploadFile.file);
 
     try {
       const response = await axios.post(endpoint.csv_upload(), formData, {
@@ -64,9 +73,10 @@ const useFormHooks = () => {
         },
       });
 
-      setSuccess(response.data.msg); 
-        } catch (error) {
-          setError("Error uploading binary CSV data:", error);
+      setSuccess(response.data.msg);
+      resetFormState();
+    } catch (error) {
+      setError("Error uploading binary CSV data:", error);
     }
   };
 
@@ -75,6 +85,7 @@ const useFormHooks = () => {
     fileInputRef,
     uploadFileChangeHandler,
     submitCsvData,
+    resetFormState,
     parsedData,
     validationError,
   };

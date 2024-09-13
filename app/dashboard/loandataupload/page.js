@@ -9,6 +9,7 @@ const Loandataupload = () => {
     fileInputRef,
     uploadFileChangeHandler,
     submitCsvData,
+    resetFormState,
     parsedData,
     uploadFile,
     validationError,
@@ -73,6 +74,9 @@ const Loandataupload = () => {
                 ))}
               </tbody>
             </table>
+            <div className="d-flex justify-content-end mt-3">
+             <button className="btn btn-outline-dark" onClick={resetFormState}>Cancel</button>
+            </div>
           </div>
         )}
         {validationError && (
