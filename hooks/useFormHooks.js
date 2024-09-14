@@ -1,13 +1,16 @@
+"use client"
 import { useRef, useState } from "react";
 import axios from "@/services/axios";
 import endpoint from "@/services/endpoint";
 import useActionDispatch from "./useActionDispatch";
+import { changeHandlerHelper } from '@/hooks/helper/changeHandler';
 
 const useFormHooks = () => {
   const fileInputRef = useRef(null);
   const { setError, setSuccess, setUserAuthCred, removeUserAuthCred } = useActionDispatch();
   const [uploadFile, setUploadFile] = useState({ file: null, error: "" });
   const [parsedData, setParsedData] = useState([]);
+  const [pdfUrl, setPdfUrl] = useState("");
   const [validationError, setValidationError] = useState(false);
 
   const uploadFileChangeHandler = (e) => {
@@ -80,6 +83,25 @@ const useFormHooks = () => {
     }
   };
 
+  const fetchAllFiles = async (pdfUrl) => {
+    try {
+        const { data } = await axios.get(endpoint.fileupload(pdfUrl.pdfUrl));
+        setSuccess(data.msg);
+    } catch (error) {
+      setError(error);
+    }
+  };
+
+ 
+   const handleSubmit = async (e) => {
+     e.preventDefault();
+     await fetchAllFiles(pdfUrl);
+     setPdfUrl("")
+   };
+
+       // change handler
+  const fetchAllFilesChangeHandler = (e) => changeHandlerHelper(e, pdfUrl, setPdfUrl)
+
   return {
     uploadFile,
     fileInputRef,
@@ -88,6 +110,10 @@ const useFormHooks = () => {
     resetFormState,
     parsedData,
     validationError,
+    fetchAllFiles,
+    pdfUrl,
+    fetchAllFilesChangeHandler,
+    handleSubmit
   };
 };
 

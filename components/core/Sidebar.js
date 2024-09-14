@@ -24,7 +24,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     {
       label: "File Upload",
       icon: icons.Icon02,
-      path: "/mergecustomerdocument",
+      path: "/dashboard/mergecustomerdocument",
     },
     {
       label: "Send Kit",
@@ -41,7 +41,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         <div>
           {!isCollapsed && (
             <span className="company-title">
-              shubham Finance</span>
+              Shubham Finance</span>
           )}
         </div>
         <button
