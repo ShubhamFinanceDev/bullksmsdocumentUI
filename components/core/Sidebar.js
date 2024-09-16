@@ -26,7 +26,7 @@ const Sidebar = (props) => {
     {
       label: "File Upload",
       icon: icons.Icon02,
-      path: "/mergecustomerdocument",
+      path: "/dashboard/mergecustomerdocument",
     },
     {
       label: "Send Kit",
