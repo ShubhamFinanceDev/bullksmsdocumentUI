@@ -427,6 +427,52 @@ img {
 }
 
 
+.confirmation-prompt {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    height: 5rem;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  h2,
+  h2 span {
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 150%;
+  }
+
+  h2 span {
+    font-weight: 700;
+  }
+
+  div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.5rem;
+
+    .confirm {
+      background: #ff5353;
+      padding: 0.5rem 1rem;
+      border-radius: 3rem;
+      color: white;
+      font-weight: 600;
+    }
+  }
+}
+
+
+
+
 
 @import "./core.style.scss";
 @import "./page.styles.scss";

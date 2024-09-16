@@ -5,10 +5,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { icons } from "@/env/icons";
 import useAuthHooks from "@/hooks/useAuthHooks";
+import modelHoc from "@/hoc/modelHoc";
 
-const Sidebar = ({ isCollapsed, toggleSidebar }) => {
+const Sidebar = (props) => {
+  const { isCollapsed, toggleSidebar } = props;
   const pathname = usePathname();
-  const {logoutActionHandler} = useAuthHooks()
+  const { logoutActionHandler } = useAuthHooks();
 
   const navlink = [
     {
@@ -24,7 +26,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     {
       label: "File Upload",
       icon: icons.Icon02,
-      path: "/dashboard/mergecustomerdocument",
+      path: "/mergecustomerdocument",
     },
     {
       label: "Send Kit",
@@ -36,22 +38,26 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
 
   return (
     <div className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
-      <div className="company-header">
-        <img src="/favicon/favicon.ico" alt="logo" className="company-logo" />
-        <div>
+       <div className="company-header">
+
+        <img src="/favicon/favicon.ico" alt="logo" className="company-logo" /> 
+           <div>
+  
           {!isCollapsed && (
-            <span className="company-title">
-              Shubham Finance</span>
+            <span className="company-title">shubham Finance</span>
           )}
+   
         </div>
+    
         <button
           className={`toggle-btn ${isCollapsed ? "toggled" : ""}`}
           onClick={toggleSidebar}
         >
-          <img src={icons.Icon05} alt="toggle" />
+      <img src={icons.Icon05} alt="toggle" />
         </button>
-      </div>
-      <div className="sidebar-content">
+         </div>
+       <div className="sidebar-content">
+    
         {navlink.map((n, idx) => (
           <Link
             href={n.path}
@@ -65,20 +71,31 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
             }
           >
             <button>
-              <img src={n.icon} alt={n.label} />
+             <img src={n.icon} alt={n.label} />
               {!isCollapsed && <span>{n.label}</span>}
             </button>
+  
           </Link>
         ))}
+
         <a>
-            <button onClick={logoutActionHandler}>
-            <img src={icons.Icon04} alt="logout" />
+   
+          <button
+            onClick={() =>
+              props.openModel({
+                key: "LOGOUT",
+              })
+            }
+          >
+    <img src={icons.Icon04} alt="logout" />
             {!isCollapsed && <span>Logout</span>}
           </button>
+     
         </a>
-      </div>
+         </div>
+ 
     </div>
   );
 };
 
-export default Sidebar;
+export default modelHoc(Sidebar);
