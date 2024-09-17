@@ -2,12 +2,12 @@
 import { useRef, useState } from "react";
 import axios from "@/services/axios";
 import endpoint from "@/services/endpoint";
-import useActionDispatch from "./useActionDispatch";
+import useActionDispatch from "@/hooks/useActionDispatch";
 import { changeHandlerHelper } from '@/hooks/helper/changeHandler';
 
 const useFormHooks = () => {
   const fileInputRef = useRef(null);
-  const { setError, setSuccess, setUserAuthCred, removeUserAuthCred } = useActionDispatch();
+  const { setError, setSuccess,setFiles } = useActionDispatch();
   const [uploadFile, setUploadFile] = useState({ file: null, error: "" });
   const [parsedData, setParsedData] = useState([]);
   const [pdfUrl, setPdfUrl] = useState("");
@@ -15,7 +15,6 @@ const useFormHooks = () => {
 
   const uploadFileChangeHandler = (e) => {
     const { files } = e.target;
-
     if (files?.[0]?.type !== "text/csv") {
       setUploadFile({
         file: null,
@@ -86,7 +85,9 @@ const useFormHooks = () => {
   const fetchAllFiles = async (pdfUrl) => {
     try {
         const { data } = await axios.get(endpoint.fileupload(pdfUrl.pdfUrl));
-        setSuccess(data.msg);
+        setFiles(data.listOfPdfNames)
+        setSuccess(data.commonResponse.msg);
+        setPdfUrl({pdfUrl:""});
     } catch (error) {
       setError(error);
     }
@@ -96,7 +97,6 @@ const useFormHooks = () => {
    const handleSubmit = async (e) => {
      e.preventDefault();
      await fetchAllFiles(pdfUrl);
-     setPdfUrl("")
    };
 
        // change handler

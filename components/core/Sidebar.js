@@ -44,7 +44,7 @@ const Sidebar = (props) => {
            <div>
   
           {!isCollapsed && (
-            <span className="company-title">shubham Finance</span>
+            <span className="company-title">Shubham</span>
           )}
    
         </div>

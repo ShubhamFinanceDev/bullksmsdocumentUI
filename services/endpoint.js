@@ -4,7 +4,7 @@ const endpoint = {
     signIn: () => BASE_URL + `/sms-service/login`,
     csv_upload: () => BASE_URL + `/admin/csvUpload`,
     singUp: () => BASE_URL + `/admin/register`,
-    fileupload: (pdfUrl = "") => BASE_URL + `/admin/csvUpload?pdfUrl=${pdfUrl}`
+    fileupload: (pdfUrl = "") => BASE_URL + `/admin/fetch-pdf?pdfUrl=${pdfUrl}`
 }
 
 export default endpoint;   

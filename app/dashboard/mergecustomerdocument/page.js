@@ -4,9 +4,12 @@ import PageHeading from "@/components/core/PageHeading";
 import ValidationMsg from "@/components/core/Input/ValidationMsg";
 import useFormHooks from "@/hooks/useFormHooks";
 import { InputWithLabel } from "@/components/core/Input";
+import { useSelector } from "react-redux";
 
 const Mergecustomerdocument = () => {
-  const {pdfUrl, fetchAllFilesChangeHandler, handleSubmit } = useFormHooks();
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+  const { files } = useSelector((state) => state.filesSlice);
+  const { pdfUrl, fetchAllFilesChangeHandler, handleSubmit } = useFormHooks();
 
   return (
     <div className="main">
@@ -39,6 +42,35 @@ const Mergecustomerdocument = () => {
               </div>
             </div>
           </form>
+        </div>
+        <div className="table-responsive table-container mt-4">
+          <h3 className="mb-2">Uploaded Files Preview:</h3>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th>File Name</th>
+                <th>Download Count</th>
+                <th>Download Time</th>
+                <th>Download URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {files.map((file, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{file.fileName}</td>
+                  <td>{file.downloadCount}</td>
+                  <td>{new Date(file.downloadTime).toLocaleDateString()}</td>
+                  <td>
+                  <a href={`${baseURL}${file.downloadUrl}`} target="_blank" rel="noopener noreferrer">
+                      <button className="button Download_button">Download</button>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

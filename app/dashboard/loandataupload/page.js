@@ -59,6 +59,7 @@ const Loandataupload = () => {
             <table className="table table-bordered">
               <thead>
                 <tr>
+                  <th>S/N</th>
                   <th>Loan no</th>
                   <th>Phone no</th>
                   <th>Category code</th>
@@ -67,6 +68,7 @@ const Loandataupload = () => {
               <tbody>
                 {parsedData.map((row, rowIndex) => (
                   <tr key={rowIndex}>
+                    <td>{rowIndex +1}</td>
                     <td>{row.loanNo}</td>
                     <td>{row.phoneNo}</td>
                     <td>{row.categoryCode}</td>
