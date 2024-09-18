@@ -56,7 +56,7 @@ const Mergecustomerdocument = () => {
               </tr>
             </thead>
             <tbody>
-              {files.map((file, index) => (
+              {files?.map((file, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{file.fileName}</td>

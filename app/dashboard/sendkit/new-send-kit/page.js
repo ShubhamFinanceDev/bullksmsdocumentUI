@@ -1,41 +1,55 @@
 'use client'
 
-import React, {useEffect} from 'react'
-import PageHeading from '@/components/core/PageHeading'
-import Drawer from '@/hoc/drawerHoc'
-import ValidationMsg from '@/components/core/Input/ValidationMsg'
+import React from 'react'
 import useFormHooks from '@/hooks/useFormHooks'
+import ValidationMsg from '@/components/core/Input/ValidationMsg'
+import { SelectWithLabel } from '@/components/core/Input'
+import PageHeading from '@/components/core/PageHeading'
 import { useSelector } from 'react-redux'
-import useNavigateHook from '@/hooks/useNavigateHooks'
 
-const Sendkit = () => {
-   const navigate=useNavigateHook()
+const NewSendSmsPage = () => {
+  const {sendkit,SendkitChangeHandler,SendkithandleSubmit}= useFormHooks()
   const { Smskit } = useSelector((state) => state.filesSlice);
   const{smsInformation}=Smskit
 
-    const {fetchsendkit}=useFormHooks()
-
-    useEffect(() => {
-        fetchsendkit()
-    }, [])
 
   return (
+
     <div className="main">
     <ValidationMsg/>
       <PageHeading
-        heading="Previous Send Kit"
+        heading="Latest Send Kit"
         // subHeading={dashboard?.name}
         showSearchInput={false}
         bypassSecurity={true}
-        btns={[
-          {
-            label: "New Sms Send",
-            className: "button",
-            onClick:() => navigate('SEND_NEW_SMS_PAGE')
-          },
-        ]}
-        
       />
+      <form onSubmit={SendkithandleSubmit}>
+    <div className='row'>
+       <div className='col-md-8'>
+        <SelectWithLabel
+          feilds={{
+            label: "Role",
+            name: "smsCategory",
+            type: "select",
+            options: [
+              { name: "ADHOC", value: "ADHOC" },
+              { name: "SOA", value: "SOA" },
+              { name: "INTEREST_CERTIFICATE", value: "INTEREST_CERTIFICATE" },
+            ],
+            isRequired: true,
+          }}
+          state={sendkit}
+          onChangeHandler={SendkitChangeHandler}
+        />
+      </div>
+        <div className="col-md-2" >
+          <button className="btn btn-outline-primary btn-sm mt-5">
+            Submit
+          </button>
+        </div>
+    </div>
+      </form>
+      
       <div className="table-responsive table-container mt-4">
           <table className="table table-bordered">
             <thead>
@@ -61,8 +75,8 @@ const Sendkit = () => {
           </table>
         </div>
 
-      </div>
+    </div>
   )
 }
 
-export default Sendkit
+export default NewSendSmsPage

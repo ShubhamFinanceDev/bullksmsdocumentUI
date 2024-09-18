@@ -7,7 +7,7 @@ import { changeHandlerHelper } from '@/hooks/helper/changeHandler';
 
 const useFormHooks = () => {
   const fileInputRef = useRef(null);
-  const { setError, setSuccess,setFiles } = useActionDispatch();
+  const { setError, setSuccess,setFiles,setSmskit,setNewSmsSendDetails } = useActionDispatch();
   const [uploadFile, setUploadFile] = useState({ file: null, error: "" });
   const [parsedData, setParsedData] = useState([]);
   const [pdfUrl, setPdfUrl] = useState("");
@@ -96,12 +96,12 @@ const useFormHooks = () => {
   const fetchsendkit = async (smsCategory = "", type='previous') => {
     try {
         const { data } = await axios.get(endpoint.sendkit(smsCategory, type));
+        setSmskit(data)
     } catch (error) {
       setError(error);
     }
   };
 
- 
    const handleSubmit = async (e) => {
      e.preventDefault();
      await fetchAllFiles(pdfUrl);
@@ -109,8 +109,16 @@ const useFormHooks = () => {
 
    const SendkithandleSubmit = async (e) => {
      e.preventDefault();
-     await fetchsendkit(sendkit.smsCategory, sendkit.type)
-
+     try{
+     const { data } = await axios.get(endpoint.sendkit(sendkit.smsCategory, sendkit.type));
+    //  const {data}=await fetchsendkit(sendkit.smsCategory, sendkit.type)
+    setNewSmsSendDetails(data)
+    setSuccess(data.msg)
+    setSendkit({ smsCategory : "", type : ""})
+     }
+     catch (error){
+     setError(error)
+     }
    };
 
        // change handler
@@ -132,7 +140,7 @@ const useFormHooks = () => {
     fetchsendkit,
     sendkit,
     SendkitChangeHandler,
-    SendkithandleSubmit
+    SendkithandleSubmit,fetchsendkit
   };
 };
 
