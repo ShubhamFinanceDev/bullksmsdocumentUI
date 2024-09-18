@@ -8,6 +8,9 @@ export const icons = {
     Icon04: "/icon/Icon-4.png",
     Icon05: "/icon/Icon-5.png",
     Icon06: "/icon/Icon-6.svg",
+    Icon07: "/icon/icon-7.svg",
+    Icon08: "/icon/icon-8.svg",
+
 
 
 

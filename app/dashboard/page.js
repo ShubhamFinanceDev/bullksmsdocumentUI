@@ -4,14 +4,13 @@ import React from 'react'
 import PageHeading from '@/components/core/PageHeading'
 import Drawer from '@/hoc/drawerHoc'
 import ValidationMsg from '@/components/core/Input/ValidationMsg'
-
+import { icons } from '@/env/icons'
 const dashboardPage = (props) => {
   return (
     <div className="main">
-    <ValidationMsg/>
+      <ValidationMsg />
       <PageHeading
         heading="Dashboard"
-        // subHeading={dashboard?.name}
         showSearchInput={false}
         bypassSecurity={true}
         btns={[
@@ -19,15 +18,29 @@ const dashboardPage = (props) => {
             label: "Add User",
             className: "button",
             onClick: () => props.openDrawer({
-                title: "SingUp",
-                component: "SINGUP",
+              title: "SignUp",
+              component: "SINGUP",
             })
           },
         ]}
-        
       />
-      <div className="container">
-
+      <div className="row">
+        <div className="col-sm-6 col-md-6 col-lg-4">
+          <div className="card orange-card">
+            <div className="card-body">
+            <img src={icons.Icon07} alt="download"/>
+              <h1>Download</h1>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-6 col-md-6 col-lg-4">
+          <div className="card blue-card">
+            <div className="card-body">
+            <img src={icons.Icon08} alt="download"/>
+              <h1>SMS Send</h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
