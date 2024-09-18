@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { Offcanvas } from 'react-bootstrap'
 import singup from '@/components/core/drawer/singup'
+import Newsendkit from '@/components/core/drawer/newsendkit'
 // Drawers
 
 
@@ -13,6 +14,7 @@ const initialState = {
 
 const DrawerMap = {
     SINGUP: singup,
+    NEW_SENDKIT: Newsendkit,
 }
 
 const Drawer = (Component) => {

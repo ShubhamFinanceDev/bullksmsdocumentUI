@@ -31,7 +31,7 @@ const Sidebar = (props) => {
     {
       label: "Send Kit",
       icon: icons.Icon03,
-      path: "/sendcertificaterequest",
+      path: "/dashboard/sendkit",
       isMobileOnly: true,
     },
   ];

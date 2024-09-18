@@ -7,10 +7,11 @@ import { changeHandlerHelper } from '@/hooks/helper/changeHandler';
 
 const useFormHooks = () => {
   const fileInputRef = useRef(null);
-  const { setError, setSuccess,setFiles } = useActionDispatch();
+  const { setError, setSuccess,setFiles,setSmskit,setNewSmsSendDetails, setDeshboardData } = useActionDispatch();
   const [uploadFile, setUploadFile] = useState({ file: null, error: "" });
   const [parsedData, setParsedData] = useState([]);
   const [pdfUrl, setPdfUrl] = useState("");
+  const [sendkit, setSendkit] = useState({ smsCategory : "", type : "new"});
   const [validationError, setValidationError] = useState(false);
 
   const uploadFileChangeHandler = (e) => {
@@ -92,15 +93,47 @@ const useFormHooks = () => {
       setError(error);
     }
   };
+  const fetchsendkit = async (smsCategory = "", type='previous') => {
+    try {
+        const { data } = await axios.get(endpoint.sendkit(smsCategory, type));
+        setSmskit(data)
+    } catch (error) {
+      setError(error);
+    }
+  };
 
- 
    const handleSubmit = async (e) => {
      e.preventDefault();
      await fetchAllFiles(pdfUrl);
    };
 
+   const SendkithandleSubmit = async (e) => {
+     e.preventDefault();
+     try{
+     const { data } = await axios.get(endpoint.sendkit(sendkit.smsCategory, sendkit.type));
+    //  const {data}=await fetchsendkit(sendkit.smsCategory, sendkit.type)
+    setNewSmsSendDetails(data)
+    setSuccess(data.msg)
+    setSendkit({ smsCategory : "", type : "new"})
+     }
+     catch (error){
+     setError(error)
+     }
+   };
+
+   const fetchDashboardData = async () => {
+    try {
+        const { data } = await axios.get(endpoint.dashboard());
+        setDeshboardData(data)
+        setSuccess(data.msg);
+    } catch (error) {
+      setError(error);
+    }
+  };
+
        // change handler
   const fetchAllFilesChangeHandler = (e) => changeHandlerHelper(e, pdfUrl, setPdfUrl)
+  const SendkitChangeHandler = (e) => changeHandlerHelper(e, sendkit, setSendkit)
 
   return {
     uploadFile,
@@ -113,7 +146,13 @@ const useFormHooks = () => {
     fetchAllFiles,
     pdfUrl,
     fetchAllFilesChangeHandler,
-    handleSubmit
+    handleSubmit,
+    fetchsendkit,
+    sendkit,
+    SendkitChangeHandler,
+    SendkithandleSubmit,
+    fetchsendkit,
+    fetchDashboardData
   };
 };
 
