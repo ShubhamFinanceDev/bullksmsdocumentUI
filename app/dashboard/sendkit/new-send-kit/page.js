@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux'
 
 const NewSendSmsPage = () => {
   const {sendkit,SendkitChangeHandler,SendkithandleSubmit}= useFormHooks()
-  const { Smskit } = useSelector((state) => state.filesSlice);
-  const{smsInformation}=Smskit
+  const { NewSmsSendDetails } = useSelector((state) => state.filesSlice);
+  const{smsInformation}=NewSmsSendDetails
 
 
   return (
