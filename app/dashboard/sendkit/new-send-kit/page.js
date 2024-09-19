@@ -6,8 +6,10 @@ import ValidationMsg from '@/components/core/Input/ValidationMsg'
 import { SelectWithLabel } from '@/components/core/Input'
 import PageHeading from '@/components/core/PageHeading'
 import { useSelector } from 'react-redux'
+import useNavigateHook from '@/hooks/useNavigateHooks'
 
 const NewSendSmsPage = () => {
+  const navigate=useNavigateHook()
   const {sendkit,SendkitChangeHandler,SendkithandleSubmit}= useFormHooks()
   const { NewSmsSendDetails } = useSelector((state) => state.filesSlice);
   const{smsInformation}=NewSmsSendDetails
@@ -22,13 +24,21 @@ const NewSendSmsPage = () => {
         // subHeading={dashboard?.name}
         showSearchInput={false}
         bypassSecurity={true}
+        btns={[
+          {
+            label: "Back",
+            className: "button",
+            onClick:() => navigate('SEND_KIT_PAGE')
+          },
+        ]}
       />
+
       <form onSubmit={SendkithandleSubmit}>
     <div className='row'>
        <div className='col-md-8'>
         <SelectWithLabel
           feilds={{
-            label: "Role",
+            label: "Category",
             name: "smsCategory",
             type: "select",
             options: [
@@ -44,7 +54,7 @@ const NewSendSmsPage = () => {
       </div>
         <div className="col-md-2" >
           <button className="btn btn-outline-primary btn-sm mt-5">
-            Submit
+            Send Sms
           </button>
         </div>
     </div>
@@ -57,8 +67,8 @@ const NewSendSmsPage = () => {
                 <th>S/N</th>
                 <th>Loan Number</th>
                 <th>Mobile Number</th>
-                <th>Sms Send</th>
-                <th>Date</th>
+                <th>Sms Status</th>
+                <th>Sms Send Date</th>
               </tr>
             </thead>
             <tbody>

@@ -40,7 +40,7 @@ const dashboardPage = (props) => {
             <div className="card-body">
             <div>
             <img src={icons.Icon07} alt="download"/>
-              <h4>Download</h4>
+              <h4>Downloads</h4>
               </div>
               <p>{dashboarddata.downloadCount}</p>
             </div>
@@ -51,7 +51,7 @@ const dashboardPage = (props) => {
             <div className="card-body">
               <div>
                <img src={icons.Icon08} alt="download"/>
-              <h4>Messages</h4>
+              <h4>Send Sms</h4>
               </div>
               <p>{dashboarddata.smsCount}</p>
             </div>
@@ -65,10 +65,11 @@ const dashboardPage = (props) => {
             <thead>
               <tr>
                 <th>S/N</th>
-                <th>Category</th>
+                <th>Loan No</th>
                 <th>Phone No</th>
                 <th>Sms Time</th>
                 <th>Last Download</th>
+                <th>Download Count</th>
               </tr>
             </thead>
             
@@ -82,6 +83,7 @@ const dashboardPage = (props) => {
                   <td>
                   {new Date(dashboard.lastDownload).toLocaleString()}
                   </td>
+                  <td>{dashboard.downloadCount}</td>
                 </tr>
               ))}
             </tbody>

@@ -49,8 +49,8 @@ const Mergecustomerdocument = () => {
             <thead>
               <tr>
                 <th>S/N</th>
-                <th>File Name</th>
-                <th>Download Count</th>
+                <th>Loan No</th>
+                {/* <th>Download Count</th> */}
                 <th>Upload Time</th>
                 <th>Download URL</th>
               </tr>
@@ -60,7 +60,7 @@ const Mergecustomerdocument = () => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{file.fileName}</td>
-                  <td>{file.downloadCount}</td>
+                  {/* <td>{file.downloadCount}</td> */}
                   <td>{new Date(file.uploadTime).toLocaleDateString()}</td>
                   <td>
                   <a href={`${baseURL}${file.downloadUrl}`} target="_blank" rel="noopener noreferrer">

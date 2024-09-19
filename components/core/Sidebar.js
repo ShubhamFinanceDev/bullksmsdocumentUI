@@ -24,7 +24,7 @@ const Sidebar = (props) => {
       path: "/dashboard/loandataupload",
     },
     {
-      label: "File Upload",
+      label: "Merge File",
       icon: icons.Icon02,
       path: "/dashboard/mergecustomerdocument",
     },

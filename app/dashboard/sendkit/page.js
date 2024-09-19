@@ -36,6 +36,7 @@ const Sendkit = () => {
         ]}
         
       />
+      <p className='totalcount'>Total Count  - {Smskit.totalCount}</p>
       <div className="table-responsive table-container mt-4">
           <table className="table table-bordered">
             <thead>
@@ -43,8 +44,8 @@ const Sendkit = () => {
                 <th>S/N</th>
                 <th>Loan Number</th>
                 <th>Mobile Number</th>
-                <th>Sms Send</th>
-                <th>Date</th>
+                <th>Sms Status</th>
+                <th>Sms Send Date</th>
               </tr>
             </thead>
             <tbody>
