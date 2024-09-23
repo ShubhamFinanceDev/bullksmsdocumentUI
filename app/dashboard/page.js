@@ -1,6 +1,6 @@
 'use client'
 
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PageHeading from '@/components/core/PageHeading'
 import Drawer from '@/hoc/drawerHoc'
 import ValidationMsg from '@/components/core/Input/ValidationMsg'
@@ -8,13 +8,14 @@ import { icons } from '@/env/icons'
 import useFormHooks from '@/hooks/useFormHooks'
 import { useSelector } from "react-redux";
 
-const dashboardPage = (props) => {
-  const {fetchDashboardData}=useFormHooks()
-  const { dashboarddata} = useSelector((state) => state.dashboardSlice);
-  const {dataLists} = dashboarddata
+const DashboardPage = (props) => {  
+  const { fetchDashboardData } = useFormHooks()
+  const { dashboarddata } = useSelector((state) => state.dashboardSlice);
+  const { dataLists } = dashboarddata;
+
   useEffect(() => {
-    fetchDashboardData()
-     },[])
+    fetchDashboardData();
+  }, []);
 
   return (
     <div className="main">
@@ -29,7 +30,7 @@ const dashboardPage = (props) => {
             className: "button",
             onClick: () => props.openDrawer({
               title: "SignUp",
-              component: "SINGUP",
+              component: "SIGNUP",
             })
           },
         ]}
@@ -38,9 +39,9 @@ const dashboardPage = (props) => {
         <div className="col-sm-6 col-md-6 col-lg-4">
           <div className="card orange-card">
             <div className="card-body">
-            <div>
-            <img src={icons.Icon07} alt="download"/>
-              <h4>Downloads</h4>
+              <div>
+                <img src={icons.Icon07} alt="download" />
+                <h4>Downloads</h4>
               </div>
               <p>{dashboarddata.downloadCount}</p>
             </div>
@@ -50,8 +51,8 @@ const dashboardPage = (props) => {
           <div className="card blue-card">
             <div className="card-body">
               <div>
-               <img src={icons.Icon08} alt="download"/>
-              <h4>Send Sms</h4>
+                <img src={icons.Icon08} alt="send sms" />
+                <h4>Send Sms</h4>
               </div>
               <p>{dashboarddata.smsCount}</p>
             </div>
@@ -60,37 +61,33 @@ const dashboardPage = (props) => {
       </div>
 
       <div className="table-responsive table-container mt-4">
-          {/* <h3 className="mb-2">Download Files :</h3> */}
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>S/N</th>
-                <th>Loan No</th>
-                <th>Phone No</th>
-                <th>Sms Time</th>
-                <th>Last Download</th>
-                <th>Download Count</th>
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>Loan No</th>
+              <th>Phone No</th>
+              <th>Sms Time</th>
+              <th>Last Download</th>
+              <th>Download Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dataLists?.map((dashboard, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{dashboard.category}</td>
+                <td>{dashboard.phoneNo}</td>
+                <td>{new Date(dashboard.smsTimeStamp).toLocaleString()}</td>
+                <td>{new Date(dashboard.lastDownload).toLocaleString()}</td>
+                <td>{dashboard.downloadCount}</td>
               </tr>
-            </thead>
-            
-            <tbody>
-              {dataLists?.map((dashboard, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{dashboard.category}</td>
-                  <td>{dashboard.phoneNo}</td>
-                  <td>{new Date(dashboard.smsTimeStamp).toLocaleString()}</td>
-                  <td>
-                  {new Date(dashboard.lastDownload).toLocaleString()}
-                  </td>
-                  <td>{dashboard.downloadCount}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
 
-export default Drawer(dashboardPage)
+export default Drawer(DashboardPage); 

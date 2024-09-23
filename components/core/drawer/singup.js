@@ -2,9 +2,8 @@ import React from 'react'
 import { InputWithLabel, SelectWithLabel } from '../Input'
 import useAuthHooks from '@/hooks/useAuthHooks'
 import ValidationMsg from '../Input/ValidationMsg'
-import Drawer from '@/hoc/drawerHoc'
 
-const singup = (props) => {
+const Singup = (props) => {
   const { singUpState,singUpChangeHandler,singUpSubmitHandler} = useAuthHooks()
   const {closeDrawer}=props
 
@@ -90,4 +89,4 @@ const singup = (props) => {
   )
 }
 
-export default singup
+export default Singup
