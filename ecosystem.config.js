@@ -4,7 +4,7 @@ module.exports = {
 
     {
 
-      name: 'admin-app',
+      name: 'bulk-sms-app',
 
       script: 'node_modules/next/dist/bin/next',
 
