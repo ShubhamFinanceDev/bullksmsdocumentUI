@@ -7,11 +7,11 @@ import { changeHandlerHelper } from '@/hooks/helper/changeHandler';
 
 const useFormHooks = () => {
   const fileInputRef = useRef(null);
-  const { setError, setSuccess,setFiles,setSmskit,setNewSmsSendDetails, setDeshboardData } = useActionDispatch();
+  const { setError, setSuccess, setFiles, setSmskit, setNewSmsSendDetails, setDeshboardData } = useActionDispatch();
   const [uploadFile, setUploadFile] = useState({ file: null, error: "" });
   const [parsedData, setParsedData] = useState([]);
   const [pdfUrl, setPdfUrl] = useState("");
-  const [sendkit, setSendkit] = useState({ smsCategory : "", type : "new"});
+  const [sendkit, setSendkit] = useState({ smsCategory: "", type: "new" });
   const [validationError, setValidationError] = useState(false);
 
   const uploadFileChangeHandler = (e) => {
@@ -53,7 +53,7 @@ const useFormHooks = () => {
     setParsedData([]);
     setValidationError(false);
     if (fileInputRef.current) {
-      fileInputRef.current.value = null; 
+      fileInputRef.current.value = null;
     }
   };
 
@@ -85,55 +85,69 @@ const useFormHooks = () => {
 
   const fetchAllFiles = async (pdfUrl) => {
     try {
-        const { data } = await axios.get(endpoint.fileupload(pdfUrl.pdfUrl));
-        setFiles(data.listOfPdfNames)
-        setSuccess(data.commonResponse.msg);
-        setPdfUrl({pdfUrl:""});
+      const { data } = await axios.get(endpoint.fileupload(pdfUrl.pdfUrl));
+      setFiles(data.listOfPdfNames)
+      setSuccess(data.commonResponse.msg);
+      setPdfUrl({ pdfUrl: "" });
     } catch (error) {
       setError(error);
     }
   };
-  const fetchsendkit = async (smsCategory = "", type='previous') => {
+
+  const fetchsendkit = async (smsCategory = "", type = 'previous') => {
     try {
-        const { data } = await axios.get(endpoint.sendkit(smsCategory, type));
-        setSmskit(data)
+      const { data } = await axios.get(endpoint.sendkit(smsCategory, type));
+      setSmskit(data)
+    } catch (error) {
+      setError(error);
+    }
+  };
+  const fetchsendpendingkit = async (smsCategory = "", type = 'unprocessed') => {
+    try {
+      const { data } = await axios.get(endpoint.sendkit(smsCategory, type));
+      setNewSmsSendDetails(data)
     } catch (error) {
       setError(error);
     }
   };
 
-   const handleSubmit = async (e) => {
-     e.preventDefault();
-     await fetchAllFiles(pdfUrl);
-   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await fetchAllFiles(pdfUrl);
+  };
 
-   const SendkithandleSubmit = async (e) => {
-     e.preventDefault();
-     try{
-     const { data } = await axios.get(endpoint.sendkit(sendkit.smsCategory, sendkit.type));
+  const SendkithandleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.get(endpoint.sendkit(sendkit.smsCategory, sendkit.type));
     //  const {data}=await fetchsendkit(sendkit.smsCategory, sendkit.type)
     setNewSmsSendDetails(data)
-    setSuccess(data.msg)
-    setSendkit({ smsCategory : "", type : "new"})
-     }
-     catch (error){
-     setError(error)
-     }
-   };
+      setSuccess(data.msg)
+      // setSendkit({ smsCategory: "", type: "" })
+    } catch (error) {
+      setError(error)
+    }
+  };
 
-   const fetchDashboardData = async () => {
+  const fetchDashboardData = async () => {
     try {
-        const { data } = await axios.get(endpoint.dashboard());
-        setDeshboardData(data)
-        setSuccess(data.msg);
+      const { data } = await axios.get(endpoint.dashboard());
+      setDeshboardData(data)
+      setSuccess(data.msg);
     } catch (error) {
       setError(error);
     }
   };
 
-       // change handler
+
+  // change handler
   const fetchAllFilesChangeHandler = (e) => changeHandlerHelper(e, pdfUrl, setPdfUrl)
-  const SendkitChangeHandler = (e) => changeHandlerHelper(e, sendkit, setSendkit)
+  const SendkitChangeHandler = async (e) => {changeHandlerHelper(e, sendkit, setSendkit);
+    const { name, value } = e.target;
+    if (name === 'smsCategory') {
+      await fetchsendpendingkit(value);
+    }
+  }
 
   return {
     uploadFile,
