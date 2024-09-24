@@ -76,7 +76,7 @@ const DashboardPage = (props) => {
             {dataLists?.map((dashboard, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{dashboard.category}</td>
+                <td>{dashboard.loanNo}</td>
                 <td>{dashboard.phoneNo}</td>
                 <td>{new Date(dashboard.smsTimeStamp).toLocaleString()}</td>
                 <td>{new Date(dashboard.lastDownload).toLocaleString()}</td>
