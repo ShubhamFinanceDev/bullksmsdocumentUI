@@ -5,6 +5,10 @@ import endpoint from "@/services/endpoint";
 import useActionDispatch from "@/hooks/useActionDispatch";
 import { changeHandlerHelper } from '@/hooks/helper/changeHandler';
 
+
+// const MergecustomerdocumentState = {
+//   smsCategory:''
+// }
 const useFormHooks = () => {
   const fileInputRef = useRef(null);
   const { setError, setSuccess, setFiles, setSmskit, setNewSmsSendDetails, setDeshboardData } = useActionDispatch();
@@ -12,6 +16,7 @@ const useFormHooks = () => {
   const [parsedData, setParsedData] = useState([]);
   const [pdfUrl, setPdfUrl] = useState("");
   const [sendkit, setSendkit] = useState({ smsCategory: "", type: "new" });
+  const [categoryDocument, setcategoryDocument] = useState({  category:""});
   const [validationError, setValidationError] = useState(false);
   const [pagination,setPagination] = useState({totalCount:0})
 
@@ -64,14 +69,12 @@ const useFormHooks = () => {
       setValidationError(true);
       return;
     }
-
     setValidationError(false);
 
     const formData = new FormData();
     formData.append("file", uploadFile.file);
-
     try {
-      const response = await axios.post(endpoint.csv_upload(), formData, {
+      const response = await axios.post(endpoint.csv_upload(),formData,{
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -84,12 +87,14 @@ const useFormHooks = () => {
     }
   };
 
-  const fetchAllFiles = async (pdfUrl) => {
+  const fetchAllFiles = async (e = { preventDefault : () => {}}) => {
+    e.preventDefault();
     try {
-      const { data } = await axios.get(endpoint.fileupload(pdfUrl.pdfUrl));
-      setFiles(data.listOfPdfNames)
+      const { data } = await axios.get(endpoint.fileupload(pdfUrl.pdfUrl, categoryDocument.category));
+      setFiles(data)
       setSuccess(data.commonResponse.msg);
       setPdfUrl({ pdfUrl: "" });
+      setcategoryDocument({category:""})
     } catch (error) {
       setError(error);
     }
@@ -134,10 +139,10 @@ const useFormHooks = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await fetchAllFiles(pdfUrl);
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await fetchAllFiles();
+  // };
 
   const SendkithandleSubmit = async (e) => {
     e.preventDefault();
@@ -182,6 +187,7 @@ const useFormHooks = () => {
       await fetchsendpendingkit(1,'unprocessed', value);
     }
   }
+  const documentCatageryChangeHandler = (e) => changeHandlerHelper(e, categoryDocument, setcategoryDocument)
 
   return {
     uploadFile,
@@ -194,11 +200,12 @@ const useFormHooks = () => {
     fetchAllFiles,
     pdfUrl,
     fetchAllFilesChangeHandler,
-    handleSubmit,
     fetchsendkit,
     fetchsendpendingkit,
     sendkit,
     pagination,
+    categoryDocument,
+    documentCatageryChangeHandler,
     SendkitChangeHandler,
     SendkithandleSubmit,
     fetchsendkit,

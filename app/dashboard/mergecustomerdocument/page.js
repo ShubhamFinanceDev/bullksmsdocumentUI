@@ -5,11 +5,13 @@ import ValidationMsg from "@/components/core/Input/ValidationMsg";
 import useFormHooks from "@/hooks/useFormHooks";
 import { InputWithLabel } from "@/components/core/Input";
 import { useSelector } from "react-redux";
+import {SelectWithLabel} from "@/components/core/Input";
 
 const Mergecustomerdocument = () => {
   const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
   const { files } = useSelector((state) => state.filesSlice);
-  const { pdfUrl, fetchAllFilesChangeHandler, handleSubmit } = useFormHooks();
+  const {listOfPdfNames,downloadCount}=files
+  const { pdfUrl, fetchAllFilesChangeHandler, fetchAllFiles,categoryDocument,documentCatageryChangeHandler } = useFormHooks();
 
   return (
     <div className="main">
@@ -20,10 +22,10 @@ const Mergecustomerdocument = () => {
       />
       <div className="container">
         <div className="container mt-4 p-0">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={fetchAllFiles}>
             <div className="row align-items-end px-2">
               <ValidationMsg />
-              <div className="col-md-10">
+              <div className="col-md-6">
                 <label>File Path :</label>
                 <InputWithLabel
                   feilds={{
@@ -35,6 +37,23 @@ const Mergecustomerdocument = () => {
                   onChangeHandler={fetchAllFilesChangeHandler}
                 />
               </div>
+              <div className='col-md-4'>
+        <SelectWithLabel
+          feilds={{
+            label: "Category",
+            name: "category",
+            type: "select",
+            options: [
+              { name: "ADHOC", value: "ADHOC" },
+              { name: "SOA", value: "SOA" },
+              { name: "INTEREST_CERTIFICATE", value: "INTEREST_CERTIFICATE" },
+            ],
+            isRequired: true,
+          }}
+          state={categoryDocument}
+          onChangeHandler={documentCatageryChangeHandler}
+        />
+      </div>
               <div className="col-md-2">
                 <button type="submit" className="btn btn-primary">
                   Submit
@@ -44,7 +63,7 @@ const Mergecustomerdocument = () => {
           </form>
         </div>
         <div className="table-responsive table-container mt-4">
-          <h3 className="mb-2">Download Files :</h3>
+          <h3 className="mb-2">Download Count : {downloadCount}</h3>
           <table className="table table-bordered">
             <thead>
               <tr>
@@ -52,21 +71,22 @@ const Mergecustomerdocument = () => {
                 <th>Loan No</th>
                 {/* <th>Download Count</th> */}
                 <th>Upload Time</th>
-                <th>Download URL</th>
+                <th>Category</th>
               </tr>
             </thead>
             <tbody>
-              {files?.map((file, index) => (
+              {listOfPdfNames?.map((file, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{file.fileName}</td>
-                  {/* <td>{file.downloadCount}</td> */}
                   <td>{new Date(file.uploadTime).toLocaleDateString()}</td>
-                  <td>
+                    <td>{file.category}</td> 
+
+                  {/* <td>
                   <a href={`${baseURL}${file.downloadUrl}`} target="_blank" rel="noopener noreferrer">
                       <button className="button Download_button">Download</button>
                     </a>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

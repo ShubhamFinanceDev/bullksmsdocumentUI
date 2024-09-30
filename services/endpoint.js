@@ -4,7 +4,7 @@ const endpoint = {
     signIn: () => BASE_URL + `/sms-service/login`,
     csv_upload: () => BASE_URL + `/admin/csvUpload`,
     singUp: () => BASE_URL + `/admin/register`,
-    fileupload: (pdfUrl = "") => BASE_URL + `/admin/fetch-pdf?pdfUrl=${pdfUrl}`,
+    fileupload: (pdfUrl = "", category = "") => BASE_URL + `/admin/fetch-pdf?pdfUrl=${pdfUrl}&category=${category}`,
     sendkit: (smsCategory = "", type="" ,pageNo=1) => BASE_URL + `/admin/sms-process?smsCategory=${smsCategory}&type=${type}&pageNo=${pageNo}`,
     dashboard: (pageNo=1) => BASE_URL + `/sms-service/dashboard-view?pageNo=${pageNo}`,
 }
