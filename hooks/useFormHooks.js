@@ -13,6 +13,7 @@ const useFormHooks = () => {
   const [pdfUrl, setPdfUrl] = useState("");
   const [sendkit, setSendkit] = useState({ smsCategory: "", type: "new" });
   const [validationError, setValidationError] = useState(false);
+  const [pagination,setPagination] = useState({totalCount:0})
 
   const uploadFileChangeHandler = (e) => {
     const { files } = e.target;
@@ -94,18 +95,40 @@ const useFormHooks = () => {
     }
   };
 
-  const fetchsendkit = async (smsCategory = "", type = 'previous') => {
+  const fetchsendkit = async (pageNo = 1, smsCategory='', type = 'previous') => {
     try {
-      const { data } = await axios.get(endpoint.sendkit(smsCategory, type));
+      const { data } = await axios.get(endpoint.sendkit(smsCategory,type,pageNo || 1));
       setSmskit(data)
+      setPagination({
+        data:[],
+        meta : {
+          nextPage : data.nextPage,
+          currentPage : pageNo,
+          totalPageCount: Math.ceil(data.totalCount / 100),
+          totalCount : data.totalCount
+
+},
+    })
     } catch (error) {
       setError(error);
     }
   };
-  const fetchsendpendingkit = async (smsCategory = "", type = 'unprocessed') => {
+  const fetchsendpendingkit = async (pageNo = 1,type = 'unprocessed',smsCategory = "",) => {
     try {
-      const { data } = await axios.get(endpoint.sendkit(smsCategory, type));
+      const { data } = await axios.get(endpoint.sendkit(smsCategory,type,pageNo));
       setNewSmsSendDetails(data)
+      setPagination({
+        data:[],
+        meta : {
+          nextPage : data.nextPage,
+          currentPage : pageNo,
+          totalPageCount: Math.ceil(data.totalCount / 100),
+          totalCount : data.totalCount
+
+},
+      error: data.msg
+    })
+
     } catch (error) {
       setError(error);
     }
@@ -129,10 +152,21 @@ const useFormHooks = () => {
     }
   };
 
-  const fetchDashboardData = async () => {
+  const fetchDashboardData = async (pageNo = 1) => {
     try {
-      const { data } = await axios.get(endpoint.dashboard());
+      const { data } = await axios.get(endpoint.dashboard(pageNo));
       setDeshboardData(data)
+      setPagination({
+        data:[],
+        meta : {
+          nextPage : data.nextPage,
+          currentPage : pageNo,
+          totalPageCount: Math.ceil(data.totalCount / 100),
+          totalCount : data.totalCount
+},
+      error: data.msg
+    })
+
       setSuccess(data.msg);
     } catch (error) {
       setError(error);
@@ -145,7 +179,7 @@ const useFormHooks = () => {
   const SendkitChangeHandler = async (e) => {changeHandlerHelper(e, sendkit, setSendkit);
     const { name, value } = e.target;
     if (name === 'smsCategory') {
-      await fetchsendpendingkit(value);
+      await fetchsendpendingkit(1,'unprocessed', value);
     }
   }
 
@@ -162,7 +196,9 @@ const useFormHooks = () => {
     fetchAllFilesChangeHandler,
     handleSubmit,
     fetchsendkit,
+    fetchsendpendingkit,
     sendkit,
+    pagination,
     SendkitChangeHandler,
     SendkithandleSubmit,
     fetchsendkit,

@@ -7,10 +7,11 @@ import { SelectWithLabel } from '@/components/core/Input'
 import PageHeading from '@/components/core/PageHeading'
 import { useSelector } from 'react-redux'
 import useNavigateHook from '@/hooks/useNavigateHooks'
+import Pagination from '@/components/core/Pagination'
 
 const NewSendSmsPage = () => {
   const navigate=useNavigateHook()
-  const {sendkit,SendkitChangeHandler,SendkithandleSubmit}= useFormHooks()
+  const {sendkit,SendkitChangeHandler,SendkithandleSubmit,pagination,fetchsendpendingkit}= useFormHooks()
   const { NewSmsSendDetails } = useSelector((state) => state.filesSlice);
   const{smsInformation}=NewSmsSendDetails
 
@@ -84,7 +85,7 @@ const NewSendSmsPage = () => {
             </tbody>
           </table>
         </div>
-
+        <Pagination meta={pagination.meta} next={fetchsendpendingkit}/>
     </div>
   )
 }

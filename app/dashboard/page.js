@@ -7,9 +7,10 @@ import ValidationMsg from '@/components/core/Input/ValidationMsg'
 import { icons } from '@/env/icons'
 import useFormHooks from '@/hooks/useFormHooks'
 import { useSelector } from "react-redux";
+import Pagination from '@/components/core/Pagination'
 
 const DashboardPage = (props) => {  
-  const { fetchDashboardData } = useFormHooks()
+  const { fetchDashboardData,pagination } = useFormHooks()
   const { dashboarddata } = useSelector((state) => state.dashboardSlice);
   const { dataLists } = dashboarddata;
 
@@ -86,7 +87,8 @@ const DashboardPage = (props) => {
           </tbody>
         </table>
       </div>
-    </div>
+      <Pagination meta={pagination.meta}next={fetchDashboardData}/>
+      </div>
   )
 }
 

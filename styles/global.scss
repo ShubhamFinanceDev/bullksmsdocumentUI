@@ -476,7 +476,14 @@ img {
 .totalcount{
   font-weight: 600
 }
-
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1rem 0;
+}
+.pagination button{
+background: none
+}
 
 
 

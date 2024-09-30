@@ -7,15 +7,17 @@ import ValidationMsg from '@/components/core/Input/ValidationMsg'
 import useFormHooks from '@/hooks/useFormHooks'
 import { useSelector } from 'react-redux'
 import useNavigateHook from '@/hooks/useNavigateHooks'
+import Pagination from '@/components/core/Pagination'
+import page from '../page'
 
 const Sendkit = () => {
    const navigate=useNavigateHook()
   const { Smskit } = useSelector((state) => state.filesSlice);
   const{smsInformation}=Smskit
 
-    const {fetchsendkit}=useFormHooks()
+    const {fetchsendkit,pagination}=useFormHooks()
 
-    useEffect(() => {
+  useEffect(() => {
         fetchsendkit()
     }, [])
 
@@ -61,7 +63,7 @@ const Sendkit = () => {
             </tbody>
           </table>
         </div>
-
+        <Pagination meta={pagination.meta}next={fetchsendkit}/>
       </div>
   )
 }
