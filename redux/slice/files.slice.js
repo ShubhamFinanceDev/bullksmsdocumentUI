@@ -19,7 +19,7 @@ export const filesSlice = createSlice({
         },
 
         setNewSmsSendDetails: (state, action) => {
-            state.NewSmsSendDetails = action.payload
+            state.NewSmsSendDetails = action.payload || []
         },
 
 

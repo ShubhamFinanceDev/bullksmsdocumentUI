@@ -43,11 +43,19 @@ const Loandataupload = () => {
                 )}
               </div>
               {parsedData && parsedData.length > 0 && (
-                <div className="col-md-2">
-                  <button className="btn btn-primary" onClick={submitCsvData}>
-                    Upload
-                  </button>
-                </div>
+              <>
+              <div className="col-md-1">
+                <button className="btn btn-primary" onClick={submitCsvData}>
+                  Upload
+                </button>
+              </div>
+              <div className="col-md-1">
+                <button className="btn btn-outline-dark" onClick={resetFormState}>
+                  Cancel
+                </button>
+              </div>
+            </>
+            
               )}
             </div>
           </form>
@@ -76,9 +84,6 @@ const Loandataupload = () => {
                 ))}
               </tbody>
             </table>
-            <div className="d-flex justify-content-end mt-3">
-             <button className="btn btn-outline-dark" onClick={resetFormState}>Cancel</button>
-            </div>
           </div>
         )}
         {validationError && (

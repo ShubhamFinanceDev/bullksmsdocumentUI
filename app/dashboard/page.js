@@ -37,25 +37,56 @@ const DashboardPage = (props) => {
         ]}
       />
       <div className="row">
-        <div className="col-sm-6 col-md-6 col-lg-4">
+        <div className="col-sm-4 col-md-4 col-lg-4">
           <div className="card orange-card">
+          <h4 className='d-flex justify-content-center'><b>ADHOC</b></h4>
             <div className="card-body">
               <div>
                 <img src={icons.Icon07} alt="download" />
                 <h4>Downloads</h4>
+                <p>{dashboarddata.downloadCount}</p>
               </div>
-              <p>{dashboarddata.downloadCount}</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-6 col-md-6 col-lg-4">
-          <div className="card blue-card">
-            <div className="card-body">
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
+                <p>{dashboarddata.smsCount}</p>
               </div>
-              <p>{dashboarddata.smsCount}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-sm-4 col-md-4 col-lg-4">
+          <div className="card blue-card">
+          <h4 className='d-flex justify-content-center'><b>SOA</b></h4>
+            <div className="card-body">
+            <div>
+                <img src={icons.Icon07} alt="download" />
+                <h4>Downloads</h4>
+                <p>{dashboarddata.downloadCount}</p>
+              </div>
+              <div>
+                <img src={icons.Icon08} alt="send sms" />
+                <h4>Send Sms</h4>
+                <p>{dashboarddata.smsCount}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-sm-4 col-md-4 col-lg-4">
+          <div className="card blue-card">
+               <h4 className='d-flex justify-content-center'><b>INTEREST_CERTIFICATE</b></h4>
+            <div className="card-body">
+            <div>
+                <img src={icons.Icon07} alt="download" />
+                <h4>Downloads</h4>
+                <p>{dashboarddata.downloadCount}</p>
+              </div>
+              <div>
+                <img src={icons.Icon08} alt="send sms" />
+                <h4>Send Sms</h4>
+                <p>{dashboarddata.smsCount}</p>
+              </div>
             </div>
           </div>
         </div>

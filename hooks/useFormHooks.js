@@ -129,29 +129,28 @@ const useFormHooks = () => {
           currentPage : pageNo,
           totalPageCount: Math.ceil(data.totalCount / 100),
           totalCount : data.totalCount
-
-},
-      error: data.msg
+        },
+      error: data.msg,
     })
 
     } catch (error) {
+      setNewSmsSendDetails([])
       setError(error);
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await fetchAllFiles();
-  // };
+  const handlePageChange = (newPage) => {
+    fetchsendpendingkit(newPage, 'unprocessed', sendkit.smsCategory);
+  };
+
+
 
   const SendkithandleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(endpoint.sendkit(sendkit.smsCategory, sendkit.type));
-    //  const {data}=await fetchsendkit(sendkit.smsCategory, sendkit.type)
     setNewSmsSendDetails(data)
       setSuccess(data.msg)
-      // setSendkit({ smsCategory: "", type: "" })
     } catch (error) {
       setError(error)
     }
@@ -209,7 +208,8 @@ const useFormHooks = () => {
     SendkitChangeHandler,
     SendkithandleSubmit,
     fetchsendkit,
-    fetchDashboardData
+    fetchDashboardData,
+    handlePageChange
   };
 };
 
