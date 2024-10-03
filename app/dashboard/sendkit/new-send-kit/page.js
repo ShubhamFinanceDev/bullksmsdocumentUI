@@ -11,7 +11,7 @@ import Pagination from '@/components/core/Pagination'
 
 const NewSendSmsPage = () => {
   const navigate=useNavigateHook()
-  const {sendkit,SendkitChangeHandler,SendkithandleSubmit,pagination,fetchsendpendingkit}= useFormHooks()
+  const {sendkit,SendkitChangeHandler,SendkithandleSubmit,pagination,handlePageChange}= useFormHooks()
   const { NewSmsSendDetails } = useSelector((state) => state.filesSlice);
   const{smsInformation}=NewSmsSendDetails
 
@@ -85,7 +85,7 @@ const NewSendSmsPage = () => {
             </tbody>
           </table>
         </div>
-        <Pagination meta={pagination.meta} next={fetchsendpendingkit}/>
+        <Pagination meta={pagination.meta} next={handlePageChange}/>
     </div>
   )
 }

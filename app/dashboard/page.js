@@ -12,7 +12,7 @@ import Pagination from '@/components/core/Pagination'
 const DashboardPage = (props) => {  
   const { fetchDashboardData,pagination } = useFormHooks()
   const { dashboarddata } = useSelector((state) => state.dashboardSlice);
-  const { dataLists } = dashboarddata;
+  const { dataLists, smsCountByCategory,downloadCountByCategory} = dashboarddata;
 
   useEffect(() => {
     fetchDashboardData();
@@ -44,12 +44,12 @@ const DashboardPage = (props) => {
               <div>
                 <img src={icons.Icon07} alt="download" />
                 <h4>Downloads</h4>
-                <p>{dashboarddata.downloadCount}</p>
+                <p>{downloadCountByCategory.ADHOC}</p>
               </div>
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
-                <p>{dashboarddata.smsCount}</p>
+                <p>{smsCountByCategory.ADHOC}</p>
               </div>
             </div>
           </div>
@@ -62,12 +62,12 @@ const DashboardPage = (props) => {
             <div>
                 <img src={icons.Icon07} alt="download" />
                 <h4>Downloads</h4>
-                <p>{dashboarddata.downloadCount}</p>
+                <p>{downloadCountByCategory.SOA}</p>
               </div>
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
-                <p>{dashboarddata.smsCount}</p>
+                <p>{smsCountByCategory.SOA}</p>
               </div>
             </div>
           </div>
@@ -80,12 +80,12 @@ const DashboardPage = (props) => {
             <div>
                 <img src={icons.Icon07} alt="download" />
                 <h4>Downloads</h4>
-                <p>{dashboarddata.downloadCount}</p>
+                <p>{downloadCountByCategory.INTEREST_CERTIFICATE}</p>
               </div>
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
-                <p>{dashboarddata.smsCount}</p>
+                <p>{smsCountByCategory.INTEREST_CERTIFICATE||0}</p>
               </div>
             </div>
           </div>

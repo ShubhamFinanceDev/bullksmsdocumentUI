@@ -7,7 +7,7 @@
   border: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100px; 
+  height: 140px; 
 }
 
 .card-body {
@@ -31,7 +31,7 @@
 .card p {
   margin: 0;
   font-weight: 600;
-  font-size: 2rem; /* Remove margin to avoid spacing issues */
+  font-size: 1.5rem; /* Remove margin to avoid spacing issues */
 }
 
 .card:hover {
