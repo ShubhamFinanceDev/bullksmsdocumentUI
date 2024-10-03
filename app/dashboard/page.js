@@ -15,8 +15,8 @@ const DashboardPage = (props) => {
   const { dataLists, smsCountByCategory,downloadCountByCategory} = dashboarddata;
 
   useEffect(() => {
-    fetchDashboardData();
-  }, []);
+    fetchDashboardData()
+  }, [])
 
   return (
     <div className="main">
@@ -44,12 +44,12 @@ const DashboardPage = (props) => {
               <div>
                 <img src={icons.Icon07} alt="download" />
                 <h4>Downloads</h4>
-                <p>{downloadCountByCategory.ADHOC}</p>
+                <p>{downloadCountByCategory?.ADHOC}</p>
               </div>
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
-                <p>{smsCountByCategory.ADHOC}</p>
+                <p>{smsCountByCategory?.ADHOC}</p>
               </div>
             </div>
           </div>
@@ -62,12 +62,12 @@ const DashboardPage = (props) => {
             <div>
                 <img src={icons.Icon07} alt="download" />
                 <h4>Downloads</h4>
-                <p>{downloadCountByCategory.SOA}</p>
+                <p>{downloadCountByCategory?.SOA}</p>
               </div>
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
-                <p>{smsCountByCategory.SOA}</p>
+                <p>{smsCountByCategory?.SOA}</p>
               </div>
             </div>
           </div>
@@ -80,12 +80,12 @@ const DashboardPage = (props) => {
             <div>
                 <img src={icons.Icon07} alt="download" />
                 <h4>Downloads</h4>
-                <p>{downloadCountByCategory.INTEREST_CERTIFICATE}</p>
+                <p>{downloadCountByCategory?.INTEREST_CERTIFICATE}</p>
               </div>
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
-                <p>{smsCountByCategory.INTEREST_CERTIFICATE||0}</p>
+                <p>{smsCountByCategory?.INTEREST_CERTIFICATE|| 0}</p>
               </div>
             </div>
           </div>
