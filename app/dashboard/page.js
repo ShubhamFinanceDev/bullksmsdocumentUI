@@ -99,6 +99,7 @@ const DashboardPage = (props) => {
               <th>S/N</th>
               <th>Loan No</th>
               <th>Phone No</th>
+              <th>Category</th>
               <th>Sms Time</th>
               <th>Last Download</th>
               <th>Download Count</th>
@@ -108,8 +109,9 @@ const DashboardPage = (props) => {
             {dataLists?.map((dashboard, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{dashboard.loanNo}</td>
-                <td>{dashboard.phoneNo}</td>
+                <td>{dashboard.loanNumber}</td>
+                <td>{dashboard.mobileNumber}</td>
+                <td>{dashboard.certificateCategory}</td>
                 <td>{new Date(dashboard.smsTimeStamp).toLocaleString()}</td>
                 <td>{new Date(dashboard.lastDownload).toLocaleString()}</td>
                 <td>{dashboard.downloadCount}</td>

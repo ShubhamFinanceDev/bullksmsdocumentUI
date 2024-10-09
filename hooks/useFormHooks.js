@@ -151,6 +151,7 @@ const useFormHooks = () => {
       const { data } = await axios.get(endpoint.sendkit(sendkit.smsCategory, sendkit.type));
     setNewSmsSendDetails(data)
       setSuccess(data.msg)
+      setSendkit({smsCategory:""})
     } catch (error) {
       setError(error)
     }

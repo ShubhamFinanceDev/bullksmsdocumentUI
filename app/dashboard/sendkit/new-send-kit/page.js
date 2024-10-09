@@ -69,6 +69,7 @@ const NewSendSmsPage = () => {
                 <th>Loan Number</th>
                 <th>Mobile Number</th>
                 <th>Sms Status</th>
+                <th>Category</th>
                 <th>Sms Send Date</th>
               </tr>
             </thead>
@@ -79,6 +80,7 @@ const NewSendSmsPage = () => {
                   <td>{sms.loanNumber}</td>
                   <td>{sms.mobileNumber}</td>
                   <td>{sms.smsFlag}</td>
+                  <td>{sms.category}</td>
                   <td>{new Date(sms.timestamp).toLocaleDateString()}</td>
                 </tr>
               ))}

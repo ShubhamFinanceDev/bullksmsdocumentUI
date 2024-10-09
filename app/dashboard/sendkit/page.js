@@ -46,6 +46,7 @@ const Sendkit = () => {
                 <th>S/N</th>
                 <th>Loan Number</th>
                 <th>Mobile Number</th>
+                <th>Category</th>
                 <th>Sms Status</th>
                 <th>Sms Send Date</th>
               </tr>
@@ -56,6 +57,7 @@ const Sendkit = () => {
                   <td>{index + 1}</td>
                   <td>{sms.loanNumber}</td>
                   <td>{sms.mobileNumber}</td>
+                  <td>{sms.category}</td>
                   <td>{sms.smsFlag}</td>
                   <td>{new Date(sms.timestamp).toLocaleDateString()}</td>
                 </tr>
