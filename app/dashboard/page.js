@@ -85,7 +85,7 @@ const DashboardPage = (props) => {
               <div>
                 <img src={icons.Icon08} alt="send sms" />
                 <h4>Send Sms</h4>
-                <p>{smsCountByCategory?.INTEREST_CERTIFICATE|| 0}</p>
+                <p>{smsCountByCategory?.INTEREST_CERTIFICATE}</p>
               </div>
             </div>
           </div>
