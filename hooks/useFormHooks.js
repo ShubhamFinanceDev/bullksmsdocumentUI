@@ -122,16 +122,17 @@ const useFormHooks = () => {
     try {
       const { data } = await axios.get(endpoint.sendkit(smsCategory,type,pageNo));
       setNewSmsSendDetails(data)
-      setPagination({
-        data:[],
-        meta : {
-          nextPage : data.nextPage,
-          currentPage : pageNo,
-          totalPageCount: Math.ceil(data.totalCount / 100),
-          totalCount : data.totalCount
-        },
-      error: data.msg,
-    })
+    //   setPagination({
+    //     data:[],
+    //     meta : {
+    //       nextPage : data.nextPage,
+    //       currentPage : pageNo,
+    //       totalPageCount: Math.ceil(data.totalCount / 100),
+    //       totalCount : data.totalCount
+    //     },
+    //   error: data.msg,
+      
+    // })
 
     } catch (error) {
       setNewSmsSendDetails([])
@@ -210,7 +211,8 @@ const useFormHooks = () => {
     SendkithandleSubmit,
     fetchsendkit,
     fetchDashboardData,
-    handlePageChange
+    handlePageChange,
+
   };
 };
 

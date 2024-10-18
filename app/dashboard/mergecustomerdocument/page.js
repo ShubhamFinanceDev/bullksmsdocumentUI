@@ -46,7 +46,9 @@ const Mergecustomerdocument = () => {
             options: [
               { name: "ADHOC", value: "ADHOC" },
               { name: "SOA", value: "SOA" },
-              { name: "INTEREST_CERTIFICATE", value: "INTEREST_CERTIFICATE" },
+              { name: "INTEREST_CERTIFICATE", value: "INTEREST_CERTIFICATE" },           
+              { name: "SOA_QUARTERLY", value: "SOA_QUARTERLY" },
+
             ],
             isRequired: true,
           }}
