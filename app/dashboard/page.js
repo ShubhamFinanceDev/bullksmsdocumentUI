@@ -37,7 +37,7 @@ const DashboardPage = (props) => {
         ]}
       />
       <div className="row">
-        <div className="col-sm-4 col-md-4 col-lg-4">
+        <div className="col-sm-3 col-md-3 col-lg-3">
           <div className="card orange-card">
           <h4 className='d-flex justify-content-center'><b>ADHOC</b></h4>
             <div className="card-body">
@@ -55,7 +55,7 @@ const DashboardPage = (props) => {
           </div>
         </div>
 
-        <div className="col-sm-4 col-md-4 col-lg-4">
+        <div className="col-sm-3 col-md-3 col-lg-3">
           <div className="card blue-card">
           <h4 className='d-flex justify-content-center'><b>SOA</b></h4>
             <div className="card-body">
@@ -73,7 +73,7 @@ const DashboardPage = (props) => {
           </div>
         </div>
 
-        <div className="col-sm-4 col-md-4 col-lg-4">
+        <div className="col-sm-3 col-md-3 col-lg-3">
           <div className="card blue-card">
                <h4 className='d-flex justify-content-center'><b>INTEREST_CERTIFICATE</b></h4>
             <div className="card-body">
@@ -90,6 +90,25 @@ const DashboardPage = (props) => {
             </div>
           </div>
         </div>
+
+                <div className="col-sm-3 col-md-3 col-lg-3">
+          <div className="card blue-card">
+               <h4 className='d-flex justify-content-center'><b>SOA_QUARTERLY</b></h4>
+            <div className="card-body">
+            <div>
+                <img src={icons.Icon07} alt="download" />
+                <h4>Downloads</h4>
+                <p>{downloadCountByCategory?.SOA_QUARTERLY}</p>
+              </div>
+              <div>
+                <img src={icons.Icon08} alt="send sms" />
+                <h4>Send Sms</h4>
+                <p>{smsCountByCategory?.SOA_QUARTERLY}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div className="table-responsive table-container mt-4">
